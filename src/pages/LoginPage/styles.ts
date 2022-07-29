@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const Background = styled.div`
-    background: rgb(212,191,252);
-    background: linear-gradient(144deg, rgba(212,191,252,1) 0%, rgba(164,198,252,1) 100%);
+    ${ ({ theme }) => theme.backgroundGradient }
     height: 100%;
     width: 100%;
     display: flex;
@@ -11,7 +10,7 @@ export const Background = styled.div`
 `;
 
 export const Form = styled.form`
-    background-color: #ffffff;
+    background-color: ${ ({ theme }) => theme.colors.white };
     width: 400px;
     padding: 30px;
     border-radius: 20px;
@@ -22,10 +21,10 @@ interface InputProps {
 }
 
 export const Input = styled.input<InputProps>`
-    border: ${ ({ error }) => error ? '1px solid #eb4335' : 'none' };
+    border: ${ ({ error, theme }) => error ? `1px solid ${ theme.colors.error }` : 'none' };
+    background-color: ${ ({ theme }) => theme.colors.grey };
+    outline-color: ${ ({ theme }) => theme.colors.accent };
     border-radius: 5px;
-    background-color: #eff1f4;
-    outline-color: #7754f6;
     padding: 0px 20px;
     height: 50px;
     width: 100%;
@@ -33,13 +32,14 @@ export const Input = styled.input<InputProps>`
 `;
 
 export const Button = styled.input`
-    background-color: #7754f6;
-    color: #ffffff;
+    background-color: ${ ({ theme }) => theme.colors.accent };
+    color: ${ ({ theme }) => theme.colors.white };
     border: none;
     border-radius: 5px;
     margin: 10px 0px;
     height: 50px;
     width: 100%;
+    font-size: 14px;
 `;
 
 export const LoginButton = styled(Button)`
@@ -47,7 +47,7 @@ export const LoginButton = styled(Button)`
 `;
 
 export const ErrorMessage = styled.p`
-    color: #eb4335;
+    color: ${ ({ theme }) => theme.colors.error };
     font-size: 12px;
     margin-top: -5px;
 `;
