@@ -4,11 +4,11 @@ import RootPage from './navigation/RootPage';
 import './App.css';
 
 function App() {
-  return (
-      <Router>
-        <RootPage />
-      </Router>
-  );
+    return (
+        <Router>
+            <RootPage />
+        </Router>
+    );
 }
 
 export default App;
