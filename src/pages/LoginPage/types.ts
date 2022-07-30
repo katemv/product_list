@@ -4,7 +4,7 @@ export type LocationState = {
     };
 };
 
-export interface IFormData {
+export interface FormData {
     username: string;
     password: string;
 }

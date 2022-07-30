@@ -1,12 +1,13 @@
-import React, { useCallback } from 'react';
+import React, { FC, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import ROUTES from 'navigation/routes';
-import { LocationState, IFormData } from './types';
-import { Background, Form, LoginButton, Input, ErrorMessage } from './styles';
+import Input from 'components/Input';
+import { LocationState, FormData } from './types';
+import { Background, Form, LoginButton } from './styles';
 
-const LoginPage = () => {
+const LoginPage: FC = () => {
     const navigate = useNavigate();
     const location = useLocation() as LocationState;
 
@@ -14,7 +15,7 @@ const LoginPage = () => {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<IFormData>();
+    } = useForm<FormData>();
 
     const login = () => {
         return new Promise(() => {
@@ -22,8 +23,7 @@ const LoginPage = () => {
         });
     };
 
-    const onSubmit = useCallback((data: IFormData): void => {
-        console.log('data', data);
+    const onSubmit = useCallback((data: FormData): void => {
         login().then(() => {
             navigate(location.state?.path || ROUTES.PRODUCTS);
         });
@@ -33,20 +33,23 @@ const LoginPage = () => {
         <Background>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <h1>Login</h1>
-                <Input
-                    {...register('username', { required: true })}
+                <Input<FormData>
+                    register={register}
+                    errors={errors}
                     placeholder="Username"
-                    error={!!errors.username}
+                    name="username"
+                    errorMessage="Username is required."
                 />
-                {errors.username && <ErrorMessage>Username is required.</ErrorMessage>}
                 <Input
-                    {...register('password', { required: true })}
-                    type="password"
+                    register={register}
+                    errors={errors}
                     placeholder="Password"
-                    error={!!errors.password}
+                    name="password"
+                    errorMessage="Password is required."
                 />
-                {errors.password && <ErrorMessage>Password is required.</ErrorMessage>}
-                <LoginButton type='submit' value='Login' />
+                <LoginButton type='submit'>
+                    Login
+                </LoginButton>
             </Form>
         </Background>
     );
