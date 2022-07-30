@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, FC } from 'react';
 import { Navigate, useLocation } from 'react-router';
 import ROUTES from './routes';
 
@@ -6,9 +6,9 @@ interface Props {
     children: ReactElement;
 }
 
-const AuthRequired: React.FC<Props> = ({ children }) => {
+const AuthRequired: FC<Props> = ({ children }) => {
     const location = useLocation();
-    const isLoggedIn = false;
+    const isLoggedIn = true;
 
     return isLoggedIn ? (
         children

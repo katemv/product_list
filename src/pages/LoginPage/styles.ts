@@ -1,14 +1,5 @@
 import styled from 'styled-components';
-import Button from 'components/Button';
-
-export const Background = styled.div`
-    ${ ({ theme }) => theme.backgroundGradient }
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
+import Button from 'components/common/Button';
 
 export const Form = styled.form`
     background-color: ${ ({ theme }) => theme.colors.white };

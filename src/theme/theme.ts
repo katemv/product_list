@@ -7,7 +7,8 @@ const customTheme: DefaultTheme = {
         black: Colors.black,
         accent: Colors.purple,
         error: Colors.red,
-        grey: Colors.grey
+        grey: Colors.grey,
+        greyDark: Colors.greyDark
     },
     backgroundGradient: `
         background: rgb(212,191,252);

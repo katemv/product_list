@@ -1,5 +1,6 @@
 enum ROUTES {
     LOGIN = '/login',
-    PRODUCTS = '/',
+    PRODUCTS = '/products',
+    CATEGORIES = '/categories',
 }
 export default ROUTES;

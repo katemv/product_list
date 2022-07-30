@@ -3,9 +3,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import ROUTES from 'navigation/routes';
-import Input from 'components/Input';
+import Input from 'components/common/Input';
+import Layout from 'components/common/Layout';
 import { LocationState, FormData } from './types';
-import { Background, Form, LoginButton } from './styles';
+import { Form, LoginButton } from './styles';
 
 const LoginPage: FC = () => {
     const navigate = useNavigate();
@@ -25,12 +26,12 @@ const LoginPage: FC = () => {
 
     const onSubmit = useCallback((data: FormData): void => {
         login().then(() => {
-            navigate(location.state?.path || ROUTES.PRODUCTS);
+            navigate(location.state?.path || ROUTES.CATEGORIES);
         });
     }, []);
 
     return (
-        <Background>
+        <Layout>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <h1>Login</h1>
                 <Input<FormData>
@@ -51,7 +52,7 @@ const LoginPage: FC = () => {
                     Login
                 </LoginButton>
             </Form>
-        </Background>
+        </Layout>
     );
 };
 
