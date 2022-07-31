@@ -4,7 +4,7 @@ import { ReactComponent as RemoveIcon } from 'assets/icons/remove-icon.svg';
 import { ReactComponent as AddIcon } from 'assets/icons/add-icon.svg';
 import Button from 'components/common/Button';
 import { useAppDispatch, useAppSelector } from 'redux/hooks';
-import { decrement, increment } from 'redux/features/cart/slice';
+import { decrement, increment } from 'redux/features/cart/cartSlice';
 import { selectSelectedItems } from 'redux/features/cart/selectors';
 import Colors from 'theme/colors';
 
