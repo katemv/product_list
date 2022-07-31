@@ -11,3 +11,10 @@ export const Form = styled.form`
 export const LoginButton = styled(Button)`
     margin-top: 40px;
 `;
+
+export const CredentialsHint = styled.div`
+   color: ${ ({ theme }) => theme.colors.greyDark };
+   display: flex;
+   flex-direction: column;
+   margin: 20px 0;
+`;

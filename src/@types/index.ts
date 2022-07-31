@@ -12,3 +12,7 @@ export interface Product {
     rating: Rating;
     title: string;
 }
+
+export interface KnownError {
+    errorMessage: string;
+}

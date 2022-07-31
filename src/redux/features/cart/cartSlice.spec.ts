@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { categoriesSlice } from 'redux/features/categories/categoriesSlice';
 import { productsSlice } from 'redux/features/products/productsSlice';
+import { authSlice } from 'redux/features/auth/authSlice';
 import { increment, decrement, cartSlice } from './cartSlice';
 import { selectCount } from './selectors';
 import { CartState } from './types';
@@ -61,7 +62,8 @@ describe('cart selectors', () => {
         reducer: {
             categories: categoriesSlice.reducer,
             cart: cartSlice.reducer,
-            products: productsSlice.reducer
+            products: productsSlice.reducer,
+            auth: authSlice.reducer
         }
     });
 

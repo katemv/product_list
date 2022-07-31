@@ -7,6 +7,7 @@ const Input = <TFormData extends Record<string, any>>({
     placeholder,
     name,
     register,
+    type,
     errors = {}
 }: ComponentProps<TFormData>) => (
         <>
@@ -14,6 +15,7 @@ const Input = <TFormData extends Record<string, any>>({
                 {...register(name, { required: true })}
                 placeholder={placeholder}
                 error={!!errors[name]}
+                type={type}
             />
             {!!errors[name] && <ErrorMessage>{errorMessage}</ErrorMessage>}
         </>

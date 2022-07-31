@@ -1,12 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Product } from '@types';
+import { KnownError, Product } from '@types';
+import axiosInstance from 'server/axiosInstance';
+import { PRODUCTS_ROUTE } from 'server/constants';
 
-export const fetchProductsAsync = createAsyncThunk(
+export const fetchProductsAsync = createAsyncThunk<Product[], string>(
     'products/fetch',
-    async (category: string) => {
-        const response = await fetch(`https://fakestoreapi.com/products/category/${ category }`);
-        const data: Product[] = await response.json();
+    async (category, thunkAPI) => {
+        try {
+            const response = await axiosInstance.get(`${ PRODUCTS_ROUTE }/${ category }`);
 
-        return data;
+            if (response.status !== 200) {
+                return thunkAPI.rejectWithValue(response.data as KnownError);
+            }
+
+            return response.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error as KnownError);
+        }
     }
 );

@@ -4,11 +4,11 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from 'pages/LoginPage';
 import ProductsPage from 'pages/ProductsPage';
 import CategoriesPage from 'pages/CategoriesPage';
+import AuthProvider from './AuthProvider';
 import ROUTES from './routes';
-import AuthRequired from './AuthRequired';
 
-const RootPage = () => {
-    return (
+const RootPage = () => (
+    <AuthProvider>
         <Routes>
             <Route
                 path={ROUTES.LOGIN}
@@ -16,28 +16,18 @@ const RootPage = () => {
             />
             <Route
                 path={ROUTES.PRODUCTS}
-                element={
-                    <AuthRequired>
-                        <ProductsPage />
-                    </AuthRequired>
-                }
+                element={<ProductsPage />}
             />
             <Route
                 path={ROUTES.CATEGORIES}
-                element={
-                    <AuthRequired>
-                        <CategoriesPage />
-                    </AuthRequired>
-                }
+                element={<CategoriesPage />}
             />
             <Route
-                path="*"
-                element={
-                    <Navigate to={ROUTES.CATEGORIES} replace />
-                }
+                path='*'
+                element={<Navigate to={ROUTES.CATEGORIES} replace />}
             />
         </Routes>
-    );
-};
+    </AuthProvider>
+);
 
 export default RootPage;

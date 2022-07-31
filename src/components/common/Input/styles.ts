@@ -16,4 +16,5 @@ export const StyledInput = styled.input<StyledInputProps>`
     height: 50px;
     width: 100%;
     margin: 10px 0px;
+    font-size: 16px;
 `;

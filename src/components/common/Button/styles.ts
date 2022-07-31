@@ -8,5 +8,5 @@ export const StyledButton = styled.button`
     margin: 10px 0px;
     height: 50px;
     width: 100%;
-    font-size: 14px;
+    font-size: 16px;
 `;
