@@ -1,29 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Layout from 'components/common/Layout';
 import Card from 'components/common/Card';
+import Header from 'components/common/Header';
 import ProductCard from 'components/products/ProductCard';
-import { Product } from '@types';
+import { useAppDispatch, useAppSelector } from 'redux/hooks';
+import { fetchProductsAsync } from 'redux/features/products/async';
+import { selectProductsList } from 'redux/features/products/selectors';
 
 import { LocationState } from './types';
 import { ProductList } from './styles';
 
 const ProductsPage = () => {
     const location = useLocation() as LocationState;
-    const [products, setProducts] = useState<Product[]>([]);
+    const products = useAppSelector(selectProductsList);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         if (location.state?.category) {
-            fetch(`https://fakestoreapi.com/products/category/${ location.state.category }`)
-                .then(res => res.json())
-                .then(json => setProducts(json));
+            dispatch(fetchProductsAsync(location.state.category));
         }
     }, []);
     return (
         <Layout>
             <Card>
-                <h1>Products</h1>
+                <Header title="Products" />
                 <ProductList>
                     {products.map((product) => (
                         <ProductCard

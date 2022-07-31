@@ -10,6 +10,10 @@ button {
     cursor: pointer;
 }
 
+button[disabled] {
+    cursor: default;
+}
+
 html,
 body,
 div#root {

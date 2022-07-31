@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ControlsContainerProps } from './types';
 
 export const Image = styled.img`
     max-width: 100%;
@@ -51,8 +52,8 @@ export const Price = styled.p`
     font-size: 24px;
 `;
 
-export const ControlsContainer = styled.div`
-    border: 1px solid ${ ({ theme }) => theme.colors.greyDark };
+export const ControlsContainer = styled.div<ControlsContainerProps>`
+    border: 1px solid ${ ({ theme, disabled }) => disabled ? theme.colors.greyDark : theme.colors.accent };
     border-radius: 30px;
     height: 40px;
     display: flex;

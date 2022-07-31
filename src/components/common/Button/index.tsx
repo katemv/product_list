@@ -1,9 +1,11 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import { StyledButton } from './styles';
 
-const Button = ({ type, children }: ButtonHTMLAttributes<HTMLButtonElement>) => (
+const Button = ({ type, disabled, children, onClick }: ButtonHTMLAttributes<HTMLButtonElement>) => (
     <StyledButton
         type={type}
+        disabled={disabled}
+        onClick={onClick}
     >
         {children}
     </StyledButton>
