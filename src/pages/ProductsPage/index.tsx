@@ -22,6 +22,7 @@ const ProductsPage = () => {
             dispatch(fetchProductsAsync(location.state.category));
         }
     }, []);
+
     return (
         <Layout>
             <Card>

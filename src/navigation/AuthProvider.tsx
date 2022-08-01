@@ -18,7 +18,7 @@ const AuthProvider: FC<Props> = ({ children }) => {
     useEffect(() => {
         const token = getStorageData('token');
 
-        if (!isAuthorized && (token === null)) {
+        if (!isAuthorized && token === null) {
             navigate(ROUTES.LOGIN, { replace: true });
         }
 

@@ -4,6 +4,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from 'pages/LoginPage';
 import ProductsPage from 'pages/ProductsPage';
 import CategoriesPage from 'pages/CategoriesPage';
+
 import AuthProvider from './AuthProvider';
 import ROUTES from './routes';
 

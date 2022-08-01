@@ -44,20 +44,18 @@ const ProductCard: FC<ComponentProps> = ({
     }, [selectedItems]);
 
     const currentItemCount = useMemo(() => {
-        const currentItem = selectedItems.find((item) => item.category === category && item.id === id);
-
-        return currentItem ? currentItem.count : 0;
+        return selectedItems.find((item) => item.category === category && item.id === id)?.count || 0;
     }, [selectedItems]);
 
     const controlsDisabled = useMemo(() => currentItemCount === 0, [currentItemCount]);
 
     const handleAdd = useCallback(() => {
         dispatch(increment({ id, category }));
-    }, []);
+    }, [id, category]);
 
     const handleRemove = useCallback(() => {
         dispatch(decrement({ id, category }));
-    }, []);
+    }, [id, category]);
 
     return (
         <StyledProductCard key={id}>

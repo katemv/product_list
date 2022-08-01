@@ -33,7 +33,7 @@ const LoginPage: FC = () => {
         <Layout>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <h1>Login</h1>
-                <Input<FormData>
+                <Input
                     register={register}
                     errors={errors}
                     placeholder="Username"
