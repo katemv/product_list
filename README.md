@@ -1,4 +1,4 @@
-# Product list assignment
+# Product list 
 Hi 👋, I'm Kateryna Khremuchkova, a passionate frontend developer from Ukraine. \
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
 
